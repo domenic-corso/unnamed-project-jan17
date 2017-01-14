@@ -17,8 +17,10 @@ public class CLI extends UI {
         System.out.println("\n0. New Question Set");
         System.out.println("1. Import Existing File");
         System.out.println("2. Exit\n");
+
+        userInp = sc.nextLine().trim();
         
-        switch (userInp.trim()) {
+        switch (userInp) {
             case "0":
             	this.showAddNewSetMenu();
             case "1":
