@@ -25,7 +25,6 @@ public class CLI extends UI {
             	return OPT_IMPORT;
             case "2":
             	return OPT_EXIT;
-            	sc.close();
         }
     	}
     }
