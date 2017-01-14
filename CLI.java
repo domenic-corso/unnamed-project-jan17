@@ -30,26 +30,50 @@ public class CLI extends UI {
     }
 
     public QuestionSet showAddNewSetMenu () {
+        // QuestionSet to add data to and eventually return
         QuestionSet questionSet = new QuestionSet();
 
         // Ask user for their desired name of the new QuestionSet
         while (true) {
-            System.out.print("Enter a name for the Question Set (max " + QuestionSet.MAX_NAME_LEN + " chars): ");
+            System.out.print("Enter a name for the Question Set " + this.getMaxCharMSG(QuestionSet.MAX_NAME_LEN) + ": ");
             userInp = sc.nextLine().trim();
+
+            // Ask again if they didn't enter anything useful
+            if (userInp.isEmpty()) continue;
+
+            // Ask again if they entered a name that is too long
+            if (userInp.length() > QuestionSet.MAX_NAME_LEN) {
+                this.showUserInpErr("Sorry, that name is too long. Try again.");
+                continue;
+            }
+
+            // Successful, set the name and continue on to next step
             questionSet.setName(userInp);
+            break;
         }
 
         // Ask user for their name to associate with this QuestionSet
-        System.out.print("Add your name to the set (optional): ");
-        userInp = sc.nextLine().trim();
+        while (true) {
+            System.out.print("Enter your name " + this.getMaxCharMSG(QuestionSet.MAX_CREATOR_NAME_LEN) +": ");
+            userInp = sc.nextLine().trim();
 
-        // Add a Creator Name to the Question Set if the user decides to do so
-        if (!userInp.isEmpty()) {
+            // Ask again if they didn't enter anything useful
+            if (userInp.isEmpty()) continue;
+
+            // Ask again if they entered a name that is too long
+            if (userInp.length() > QuestionSet.MAX_CREATOR_NAME_LEN) {
+                this.showUserInpErr("Sorry, that name is too long. Try again.");
+                continue;
+            }
+
+            // Successful, set the creator name and continue on to next step
             questionSet.setCreatorName(userInp);
-        } else {
-            questionSet.setCreatorName(null);
+            break;
         }
 
         return questionSet;
     }
+
+    private void showUserInpErr (String message) { System.out.println("ERR: " + message); }
+    private String getMaxCharMSG (int maxChars) { return "(max characters: " + maxChars + ")"; }
 }
