@@ -20,11 +20,13 @@ public class CLI extends UI {
         
         switch (userInp.trim()) {
             case "0":
-            	return OPT_NEW_SET;
+            	this.showAddNewSetMenu();
             case "1":
             	return OPT_IMPORT;
             case "2":
             	return OPT_EXIT;
+            default: 
+            	System.out.println("[ERROR] Not a valid option");
         }
     	}
     }
@@ -37,6 +39,7 @@ public class CLI extends UI {
             System.out.print("Enter a name for the Question Set (max " + QuestionSet.MAX_NAME_LEN + " chars): ");
             userInp = sc.nextLine().trim();
             questionSet.setName(userInp);
+  
         }
 
         // Ask user for their name to associate with this QuestionSet
