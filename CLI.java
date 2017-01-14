@@ -18,18 +18,15 @@ public class CLI extends UI {
         System.out.println("1. Import Existing File");
         System.out.println("2. Exit\n");
         
-        switch (Integer.parseInt(userInp.trim())) {
-            case OPT_NEW_SET:
-            	System.out.println("Selected New Question Set");
-            	break;
-            case OPT_IMPORT:
-            	System.out.println("Importing File");
-            	break;
-            case OPT_EXIT:
-            	System.out.println("Exiting Application");
+        switch (userInp.trim()) {
+            case "0":
+            	return OPT_NEW_SET;
+            case "1":
+            	return OPT_IMPORT;
+            case "2":
+            	return OPT_EXIT;
             	sc.close();
         }
-        return userInp;
     	}
     }
 
