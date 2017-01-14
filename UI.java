@@ -11,7 +11,7 @@ abstract public class UI {
     final public int OPT_IMPORT = 1;
     final public int OPT_EXIT = 2;
 
-    final public String WELCOME_MESSAGE = "Welcome to Unnamed Project Jan 17";
+    final public String WELCOME_MESSAGE = "Welcome to Unnamed Project Jan 17\n";
 
     // Shows Main Menu options for user and returns their selection as int
     abstract public int showMainMenu ();
