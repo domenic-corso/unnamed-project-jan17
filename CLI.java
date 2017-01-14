@@ -34,19 +34,21 @@ public class CLI extends UI {
         QuestionSet questionSet = new QuestionSet();
 
         // Ask user for their desired name of the new QuestionSet
-        System.out.print("Enter a name for the Question Set: ");
-        userInp = sc.nextLine();
-        questionSet.setName(userInp);
+        while (true) {
+            System.out.print("Enter a name for the Question Set (max " + QuestionSet.MAX_NAME_LEN + " chars): ");
+            userInp = sc.nextLine().trim();
+            questionSet.setName(userInp);
+        }
 
         // Ask user for their name to associate with this QuestionSet
         System.out.print("Add your name to the set (optional): ");
-        userInp = sc.nextLine();
+        userInp = sc.nextLine().trim();
 
-        if (userInp.isEmpty()) {
-            questionSet.setCreatorName(null);
-        }
-        else {
+        // Add a Creator Name to the Question Set if the user decides to do so
+        if (!userInp.isEmpty()) {
             questionSet.setCreatorName(userInp);
+        } else {
+            questionSet.setCreatorName(null);
         }
 
         return questionSet;

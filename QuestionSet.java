@@ -1,4 +1,6 @@
 public class QuestionSet {
+    static final public int MAX_NAME_LEN = 30;
+
     private String name;
     private String creatorName;
 
@@ -15,6 +17,7 @@ public class QuestionSet {
     public void debugDetails () {
         System.out.println("---- Question Set Details (Debugging) ----\n");
         System.out.println("Name: " + this.getName());
+        System.out.println("Creator: " + this.getCreatorName());
         System.out.println("\n---- End Question Set Details ----");
     }
 }
