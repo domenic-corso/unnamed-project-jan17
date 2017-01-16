@@ -2,11 +2,11 @@ import java.util.Date;
 
 public class QuestionSet {
     // Useful constants
-    static final public int MAX_NAME_LEN = 30;
+    static final public int MAX_TITLE_LEN = 30;
     static final public int MAX_CREATOR_NAME_LEN = 20;
 
     // Instance variables
-    private String name;
+    private String title;
     private String creatorName;
     private Date dateCreated;
     private Question[] questions = new Question[Application.MAX_QUESTIONS_PER_SET];
@@ -16,7 +16,7 @@ public class QuestionSet {
         this.numQuestions = 0;
     }
 
-    public String getName () { return this.name; }
+    public String getTitle () { return this.title; }
 
     public String getCreatorName () { return this.creatorName; }
 
@@ -30,13 +30,13 @@ public class QuestionSet {
         this.questions[this.numQuestions++] = question;
     }
 
-    public void setName (String name) { this.name = name; }
+    public void setTitle (String title) { this.title = title; }
 
     public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
 
     public void debugDetails () {
         System.out.println("---- Question Set Details (Debugging) ----\n");
-        System.out.println("Name: " + this.getName());
+        System.out.println("Title: " + this.getTitle());
         System.out.println("Creator: " + this.getCreatorName());
         System.out.println("Questions:");
 
