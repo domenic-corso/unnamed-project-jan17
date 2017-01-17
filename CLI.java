@@ -82,8 +82,7 @@ public class CLI extends UI {
     	//Ask user for answer
     	question.setAnswer(promptForDataValue("Enter Answer for Question: ", Question.MAX_QUESTION_ANSWER_LEN));
     	
-    	//Store answer for question here // 
-<<<<<<< HEAD
+    	//Store answer for question here //
     	
     	//User is prompted to add another question 
     	promptForDataValue("Would you like to enter another question? (y/n)\n", 1);
@@ -96,15 +95,13 @@ public class CLI extends UI {
     		
     		//Repeat steps to ask and add a question
     	}
-=======
     
     	//Tracker of questions
-    	System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + Application.MAX_QUESTIONS_PER_SET);
+    	System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
     	System.out.println("\nCurrent Questions: ");
     	questionSet.listQuestions();
         
         }
->>>>>>> origin/master
     	
     	// Finally once all data has been gathered, return it.
         return questionSet;
