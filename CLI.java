@@ -47,8 +47,11 @@ public class CLI extends UI {
     // eventually created Question Set. It does this by creating a new instance of QuestionSet and then progressively
     // add data to it until it is returned.
     public QuestionSet showAddNewSetMenu () {
+        Question newQues;
+        QuestionSet questionSet;
+
         // QS to progressively add data to.
-        QuestionSet questionSet = new QuestionSet();
+        questionSet = new QuestionSet();
 
         this.displayMenuOptionTitle("Add new Question Set");
 
@@ -60,35 +63,36 @@ public class CLI extends UI {
 
         // Add an extra line break to give room for next prompt
         System.out.println();
+
+        this.displayMenuOptionTitle("Add your Questions");
         
-        Question question = new Question();
-        
-        String questionInp, questionAnswer;
-        
-        while(true){
-        //Prompt Question
-        System.out.println("\n[Enter 'exit' to finish]");
-        questionInp = promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN);
-    
-        //If question is equal to exit break while loop
-        if(questionInp.equals("exit")){ break; }
-        
-        //Set the Question
-        question.setQuestion(questionInp);
-        
-        //Store the question in the Array 
-    	questionSet.addQuestion(question);
-    	
-    	//Ask user for answer
-    	question.setAnswer(promptForDataValue("Enter Answer for Question: ", Question.MAX_QUESTION_ANSWER_LEN));
-    	
-    	//Store answer for question here //
-    
-    	//Tracker of questions
-    	System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
-    	System.out.println("\nCurrent Questions: ");
-    	questionSet.listQuestions();
-        
+        while (true) {
+            // Instantiate a new Question.
+            newQues = new Question();
+
+            // Set the question.
+            newQues.setQuestion(promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN));
+
+            // Set the answer.
+            newQues.setAnswer(promptForDataValue("Enter Answer: ", Question.MAX_QUESTION_ANSWER_LEN));
+
+            // Add this Question to the QuestionSet.
+            questionSet.addQuestion(newQues);
+
+            // Tell user how many questions they have left.
+            this.showMessage("Current number of Questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
+
+            // Add line break to add room for next potential question prompt.
+            System.out.println();
+
+            // If maximum number of questions has been reached, then stop asking for questions.
+            if (questionSet.getNumQuestions() == App.MAX_QUESTIONS_PER_SET) {
+                this.alertUser("You have reached the maximum number of questions allowed (" + App.MAX_QUESTIONS_PER_SET + ").");
+                break;
+            }
+
+            // If user does not wish to add another Question, then stop asking for questions.
+            if (!promptYesOrNo("Would you like to add another?")) break;
         }
     	
     	// Finally once all data has been gathered, return it.
@@ -109,8 +113,8 @@ public class CLI extends UI {
 
         // Keep asking user for their answer if they don't say 'y' or 'n'.
         do {
-            textAnswer = this.promptForDataValue(promptMessage + " (y/n)", 0);
-        } while (!textAnswer.toLowerCase().equals("y") || !textAnswer.toLowerCase().equals("n"));
+            textAnswer = this.promptForDataValue(promptMessage + " (y/n) : ", 0);
+        } while (!textAnswer.toLowerCase().equals("y") && !textAnswer.toLowerCase().equals("n"));
 
         // Return true if they answered yes.
         if (textAnswer.equals("y")) return true;
