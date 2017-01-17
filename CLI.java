@@ -63,16 +63,27 @@ public class CLI extends UI {
         
         Question question = new Question();
         
-        //Ask user for question
-    	question.setQuestion(promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN));
-    	
-    	//Store the question in the Array 
+        String questionInp, questionAnswer;
+        
+        while(true){
+        //Prompt Question
+        System.out.println("\n[Enter 'exit' to finish]");
+        questionInp = promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN);
+    
+        //If question is equal to exit break while loop
+        if(questionInp.equals("exit")){ break; }
+        
+        //Set the Question
+        question.setQuestion(questionInp);
+        
+        //Store the question in the Array 
     	questionSet.addQuestion(question);
     	
     	//Ask user for answer
     	question.setAnswer(promptForDataValue("Enter Answer for Question: ", Question.MAX_QUESTION_ANSWER_LEN));
     	
     	//Store answer for question here // 
+<<<<<<< HEAD
     	
     	//User is prompted to add another question 
     	promptForDataValue("Would you like to enter another question? (y/n)\n", 1);
@@ -85,6 +96,15 @@ public class CLI extends UI {
     		
     		//Repeat steps to ask and add a question
     	}
+=======
+    
+    	//Tracker of questions
+    	System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + Application.MAX_QUESTIONS_PER_SET);
+    	System.out.println("\nCurrent Questions: ");
+    	questionSet.listQuestions();
+        
+        }
+>>>>>>> origin/master
     	
     	// Finally once all data has been gathered, return it.
         return questionSet;
