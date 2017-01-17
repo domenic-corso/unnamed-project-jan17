@@ -30,7 +30,7 @@ public class CLI extends UI {
             // Switch out the user input and run a method based on the chosen option.
             switch (userInp) {
                 case "1":
-                    this.showAddNewSetMenu();
+                    Core.createQuestionSet();
                     continue;
                 case "2":
                     this.showError("Not yet implemented.");
@@ -79,7 +79,7 @@ public class CLI extends UI {
     	
     	if(userInp.equals("y") || userInp.equals("Y")){
     		//Tracker of questions
-    		System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + Application.MAX_QUESTIONS_PER_SET);
+    		System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
     		System.out.println("\nCurrent Questions: ");
     		questionSet.listQuestions();
     		
@@ -88,6 +88,30 @@ public class CLI extends UI {
     	
     	// Finally once all data has been gathered, return it.
         return questionSet;
+    }
+
+    // Check parent class for description.
+    public void showError (String message) {
+        this.showMessage("ERR: " + message);
+    }
+
+    // Check parent class for description.
+    public void alertUser (String message) { this.showMessage("ALERT: " + message); }
+
+    // Check parent class for description.
+    public boolean promptYesOrNo (String promptMessage) {
+        String textAnswer;
+
+        // Keep asking user for their answer if they don't say 'y' or 'n'.
+        do {
+            textAnswer = this.promptForDataValue(promptMessage + " (y/n)", 0);
+        } while (!textAnswer.toLowerCase().equals("y") || !textAnswer.toLowerCase().equals("n"));
+
+        // Return true if they answered yes.
+        if (textAnswer.equals("y")) return true;
+
+        // Otherwise in all other cases return false.
+        return false;
     }
    
     // Asks user for a string of text and return it. Needs a prompt message as well as a maximum amount of characters
@@ -104,7 +128,7 @@ public class CLI extends UI {
             if (userInp.isEmpty()) continue;
 
             // Prompt again if user entered text that is too long.
-            if (userInp.length() > maxChars) {
+            if (maxChars > 0 && userInp.length() > maxChars) {
                 this.showError("Sorry, you must enter a maximum of " + maxChars + " characters. Try again.");
                 continue;
             }
@@ -120,8 +144,8 @@ public class CLI extends UI {
         System.out.println();
     }
 
-    // Takes in a message and prints it out in the form of an error
-    private void showError (String message) {
-        System.out.println("ERR: " + message);
+    // Prints out a basic message.
+    private void showMessage (String message) {
+        System.out.println(message);
     }
 }

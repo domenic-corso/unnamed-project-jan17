@@ -9,7 +9,7 @@ public class QuestionSet {
     private String title;
     private String creatorName;
     private Date dateCreated;
-    private Question[] questions = new Question[Application.MAX_QUESTIONS_PER_SET];
+    private Question[] questions = new Question[App.MAX_QUESTIONS_PER_SET];
     private int numQuestions;
 
     public QuestionSet () {
@@ -26,7 +26,7 @@ public class QuestionSet {
     public void addQuestion (Question question) {
         // Cancel if the maximum number of questions has been reached
         // Note that this should never really be greater than, could leave it as '=='
-        if (this.numQuestions >= Application.MAX_QUESTIONS_PER_SET) return;
+        if (this.numQuestions >= App.MAX_QUESTIONS_PER_SET) return;
         this.questions[this.numQuestions++] = question;
     }
 
