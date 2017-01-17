@@ -83,18 +83,6 @@ public class CLI extends UI {
     	question.setAnswer(promptForDataValue("Enter Answer for Question: ", Question.MAX_QUESTION_ANSWER_LEN));
     	
     	//Store answer for question here //
-    	
-    	//User is prompted to add another question 
-    	promptForDataValue("Would you like to enter another question? (y/n)\n", 1);
-    	
-    	if(userInp.equals("y") || userInp.equals("Y")){
-    		//Tracker of questions
-    		System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
-    		System.out.println("\nCurrent Questions: ");
-    		questionSet.listQuestions();
-    		
-    		//Repeat steps to ask and add a question
-    	}
     
     	//Tracker of questions
     	System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
