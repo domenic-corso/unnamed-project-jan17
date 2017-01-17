@@ -60,11 +60,36 @@ public class CLI extends UI {
 
         // Add an extra line break to give room for next prompt
         System.out.println();
-
-        // Finally once all data has been gathered, return it.
+        
+        Question question = new Question();
+        
+        //Ask user for question
+    	question.setQuestion(promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN));
+    	
+    	//Store the question in the Array 
+    	questionSet.addQuestion(question);
+    	
+    	//Ask user for answer
+    	question.setAnswer(promptForDataValue("Enter Answer for Question: ", Question.MAX_QUESTION_ANSWER_LEN));
+    	
+    	//Store answer for question here // 
+    	
+    	//User is prompted to add another question 
+    	promptForDataValue("Would you like to enter another question? (y/n)\n", 1);
+    	
+    	if(userInp.equals("y") || userInp.equals("Y")){
+    		//Tracker of questions
+    		System.out.println("\nCurrent number of questions: " + questionSet.getNumQuestions() + "/" + Application.MAX_QUESTIONS_PER_SET);
+    		System.out.println("\nCurrent Questions: ");
+    		questionSet.listQuestions();
+    		
+    		//Repeat steps to ask and add a question
+    	}
+    	
+    	// Finally once all data has been gathered, return it.
         return questionSet;
     }
-
+   
     // Asks user for a string of text and return it. Needs a prompt message as well as a maximum amount of characters
     // allowed.
     private String promptForDataValue (String promptMessage, int maxChars) {

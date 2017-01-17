@@ -3,6 +3,8 @@ public class Question {
     private String question;
     private String answer;
 
+    static final public int MAX_QUESTION_ANSWER_LEN = 50;
+    
     public Question () {}
 
     public void setQuestion (String question) { this.question = question; }
@@ -15,7 +17,7 @@ public class Question {
         System.out.println("---- Question Details (Debug) ----\n");
         System.out.println("Q: " + this.getQuestion());
         System.out.println("A: " + this.getAnswer());
-        System.out.println("---- End Question Details ----");
+        System.out.println("---- End Question Details ----\n");
     }
 
 }
