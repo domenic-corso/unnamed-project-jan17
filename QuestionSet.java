@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Random;
 
 public class QuestionSet {
     // Useful constants
@@ -34,14 +35,35 @@ public class QuestionSet {
 
     public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
 
+    // Returns a shuffled version of the Questions' array.
+    public Question[] shuffleQuestions () {
+        // Create new empty array of Questions' which will be filled with random Questions of the original array.
+        Question[] shuffled = new Question[this.numQuestions];
+
+        // Get an integer array containing random distinct values from 0 to this.numQuestions (non-exclusive)
+        // For example, if this.numQuestions was 4, this COULD equal {3,0,1,2}
+        // For example, if this.numQuestions was 9, this COULD equal {5,2,3,8,7,1,0,4,6}
+        int[] randomIndexes = new Random().ints(0, this.numQuestions).distinct().limit(this.numQuestions).toArray();
+
+        // Loop through the randomly generated indexes, and progressively add Questions to the shuffled array based
+        // on the randomness of the generated indexes.
+        for (int i = 0; i < randomIndexes.length; i++) {
+            shuffled[i] = this.questions[randomIndexes[i]];
+        }
+
+        // Finally, return the shuffled array.
+        return shuffled;
+    }
+
     public void debugDetails () {
         System.out.println("---- Question Set Details (Debugging) ----\n");
         System.out.println("Title: " + this.getTitle());
         System.out.println("Creator: " + this.getCreatorName());
         System.out.println("Questions:");
 
+        Question[] shuffledVersion = this.shuffleQuestions();
         for (int i = 0; i < this.numQuestions; i++) {
-            this.questions[i].debugDetails();
+            shuffledVersion[i].debugDetails();
         }
 
         System.out.println("\n---- End Question Set Details ----");
