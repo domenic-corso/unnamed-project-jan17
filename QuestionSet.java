@@ -29,17 +29,6 @@ public class QuestionSet {
         if (this.numQuestions >= Application.MAX_QUESTIONS_PER_SET) return;
         this.questions[this.numQuestions++] = question;
     }
-    
-    public void listQuestions(){
-    	int i;
-    	if(questions == null){
-    		System.out.println("No questions!");
-    	}else{
-    	for (i = 0; i < numQuestions; i++){
-    		System.out.println("Question: " + questions[i].getQuestion() + "\n");
-    		}
-    	}
-    }
 
     public void setTitle (String title) { this.title = title; }
 
@@ -56,5 +45,16 @@ public class QuestionSet {
         }
 
         System.out.println("\n---- End Question Set Details ----");
+    }
+
+    public void listQuestions () {
+        if  (numQuestions == 0) {
+            System.out.println("No questions!");
+            return;
+        }
+
+        for (int i = 0; i < numQuestions; i++) {
+            System.out.println("Question #" + (i + 1) + ": " + questions[i].getQuestion());
+        }
     }
 }
