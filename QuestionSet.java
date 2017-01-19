@@ -38,10 +38,8 @@ public class QuestionSet {
     public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
     
     // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
-    public Date setDate(){
-    	Date newDate = new Date();
-    	this.dateCreated = newDate;
-		return dateCreated;
+    public void setDate(){
+    	this.dateCreated = new Date();
     }
 
     // Returns a shuffled version of the Questions' array.
