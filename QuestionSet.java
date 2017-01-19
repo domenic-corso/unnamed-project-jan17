@@ -38,9 +38,9 @@ public class QuestionSet {
     public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
     
     // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
-    public Date getDate(){
-    	Date dateCreated = new Date();
-    	this.dateCreated = dateCreated;
+    public Date setDate(){
+    	Date newDate = new Date();
+    	this.dateCreated = newDate;
 		return dateCreated;
     }
 
