@@ -155,7 +155,7 @@ public class CLI extends UI {
         this.showMessage("Your Answer:");
         this.showMessage(qr.getUserAnswer());
         this.showMessage("Actual Answer:");
-        this.showMessage(qr.getQuestion().getQuestion());
+        this.showMessage(q.getAnswer());
         this.showMessage("Accuracy: " + qr.getAccuracy());
 
         // Divide interface
