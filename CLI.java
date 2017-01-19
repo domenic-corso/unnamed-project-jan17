@@ -13,19 +13,19 @@ public class CLI extends UI {
     // user chooses to exit the application, return from this method.
     public void showMainMenu () {
     	while (true) {
-            System.out.println(WELCOME_MESSAGE);
-            System.out.println();
-            System.out.println("1. Create a new Question Set.");
-            System.out.println("2. Import an existing Question Set.");
-            System.out.println("3. Exit application.");
-            System.out.println();
-            System.out.print("Select an option: ");
+            this.showMessage(WELCOME_MESSAGE);
+            this.lineBreak();
+            this.showMessage("1. Create a new Question Set.");
+            this.showMessage("2. Import an existing Question Set.");
+            this.showMessage("3. Exit application.");
+            this.lineBreak();
+            this.showMessage("Select an option: ");
 
             // Grab text user entered and trim it immediately.
             userInp = sc.nextLine().trim();
 
             // Add an extra line break to give room for next prompt
-            System.out.println();
+            this.lineBreak();
 
             // Switch out the user input and run a method based on the chosen option.
             switch (userInp) {
@@ -56,13 +56,13 @@ public class CLI extends UI {
         this.displayMenuOptionTitle("Add new Question Set");
 
         // Ask user for title of QS.
-        questionSet.setTitle(this.promptForDataValue("Title of Question Set: ", QuestionSet.MAX_TITLE_LEN));
+        questionSet.setTitle(this.promptForDataValue("Title of Question Set: ", QuestionSet.MAX_TITLE_LEN, false));
 
         // Ask user for the creator name (their name) of QS.
-        questionSet.setCreatorName(this.promptForDataValue("Enter your name: ", QuestionSet.MAX_CREATOR_NAME_LEN));
+        questionSet.setCreatorName(this.promptForDataValue("Enter your name: ", QuestionSet.MAX_CREATOR_NAME_LEN, false));
 
         // Add an extra line break to give room for next prompt
-        System.out.println();
+        this.lineBreak();
 
         this.displayMenuOptionTitle("Add your Questions");
         
@@ -71,10 +71,10 @@ public class CLI extends UI {
             newQues = new Question();
 
             // Set the question.
-            newQues.setQuestion(promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN));
+            newQues.setQuestion(promptForDataValue("Enter Question: ", Question.MAX_QUESTION_ANSWER_LEN, false));
 
             // Set the answer.
-            newQues.setAnswer(promptForDataValue("Enter Answer: ", Question.MAX_QUESTION_ANSWER_LEN));
+            newQues.setAnswer(promptForDataValue("Enter Answer: ", Question.MAX_QUESTION_ANSWER_LEN, false));
 
             // Add this Question to the QuestionSet.
             questionSet.addQuestion(newQues);
@@ -83,7 +83,7 @@ public class CLI extends UI {
             this.showMessage("Current number of Questions: " + questionSet.getNumQuestions() + "/" + App.MAX_QUESTIONS_PER_SET);
 
             // Add line break to add room for next potential question prompt.
-            System.out.println();
+            this.lineBreak();
 
             // If maximum number of questions has been reached, then stop asking for questions.
             if (questionSet.getNumQuestions() == App.MAX_QUESTIONS_PER_SET) {
@@ -116,7 +116,7 @@ public class CLI extends UI {
 
         // Keep asking user for their answer if they don't say 'y' or 'n'.
         do {
-            textAnswer = this.promptForDataValue(promptMessage + " (y/n) : ", 0);
+            textAnswer = this.promptForDataValue(promptMessage + " (y/n) : ", 0, false);
         } while (!textAnswer.toLowerCase().equals("y") && !textAnswer.toLowerCase().equals("n"));
 
         // Return true if they answered yes.
@@ -132,6 +132,7 @@ public class CLI extends UI {
         QuestionResult[] results = new QuestionResult[questions.length];
 
         this.alertUser("Beginning test '" + testTitle + "'");
+        this.lineBreak();
 
         for (int i = 0; i < results.length; i++) {
             results[i] = askQuestion(questions[i]);
@@ -145,31 +146,35 @@ public class CLI extends UI {
         // Add the Question to the QuestionResult.
         qr.setQuestion(q);
 
-        // Divide interface
-        this.showMessage("--------------------------------");
+        this.showMessage("Question");
+        this.showDivisor();
 
         // Ask user for their answer to the question and store it in the QuestionResult object.
-        qr.setUserAnswer(this.promptForDataValue(q.getQuestion(), 0));
+        qr.setUserAnswer(this.promptForDataValue(q.getQuestion(), 0, true));
 
         // Display as a percentage how accurate the user was to the actual answer.
+
+        this.lineBreak();
         this.showMessage("Your Answer:");
         this.showMessage(qr.getUserAnswer());
+        this.lineBreak();
         this.showMessage("Actual Answer:");
         this.showMessage(q.getAnswer());
+        this.lineBreak();
         this.showMessage("Accuracy: " + qr.getAccuracy());
-
-        // Divide interface
-        this.showMessage("--------------------------------");
+        this.lineBreak();
 
         return qr;
     }
    
     // Asks user for a string of text and return it. Needs a prompt message as well as a maximum amount of characters
     // allowed.
-    private String promptForDataValue (String promptMessage, int maxChars) {
+    private String promptForDataValue (String promptMessage, int maxChars, boolean newLine) {
         while (true) {
             // Show prompt.
             System.out.print(promptMessage);
+
+            if (newLine) this.lineBreak();
 
             // Gather user input, trim it immediately.
             userInp = sc.nextLine().trim();
@@ -186,6 +191,16 @@ public class CLI extends UI {
             // If the data is good, return it.
             return userInp;
         }
+    }
+
+    // Displays a divider (using dashes)
+    private void showDivisor () {
+        this.showMessage("-------------------------------------------------");
+    }
+
+    // Displays a line break
+    private void lineBreak() {
+        this.showMessage("");
     }
 
     // Displays a title for a menu option, such as 'Add new QS' or 'Import'.
