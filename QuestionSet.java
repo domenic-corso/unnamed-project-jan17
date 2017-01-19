@@ -23,6 +23,8 @@ public class QuestionSet {
     public String getCreatorName () { return this.creatorName; }
 
     public int getNumQuestions () { return this.numQuestions; }
+    
+    public Date getDate () { return this.dateCreated; }
 
     // Add a Question to array of Questions
     public void addQuestion (Question question) {
