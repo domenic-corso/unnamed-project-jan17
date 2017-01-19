@@ -68,6 +68,7 @@ public class QuestionSet {
         System.out.println("---- Question Set Details (Debugging) ----\n");
         System.out.println("Title: " + this.getTitle());
         System.out.println("Creator: " + this.getCreatorName());
+        System.out.println("Date: " + this.dateCreated.toString());
         System.out.println("Questions:");
 
         Question[] shuffledVersion = this.shuffleQuestions();

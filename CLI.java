@@ -94,7 +94,10 @@ public class CLI extends UI {
             // If user does not wish to add another Question, then stop asking for questions.
             if (!promptYesOrNo("Would you like to add another?")) break;
         }
-    	
+
+        // Add a date created to the QS.
+        questionSet.setDate();
+
     	// Finally once all data has been gathered, return it.
         return questionSet;
     }
