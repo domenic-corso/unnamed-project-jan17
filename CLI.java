@@ -130,6 +130,7 @@ public class CLI extends UI {
     public QuestionResult[] beginTest (Question[] questions, String testTitle) {
         // Create an array of QuestionResult, one for each Question.
         QuestionResult[] results = new QuestionResult[questions.length];
+
         this.alertUser("Beginning test '" + testTitle + "'");
 
         for (int i = 0; i < results.length; i++) {
@@ -152,6 +153,8 @@ public class CLI extends UI {
 
         // Display as a percentage how accurate the user was to the actual answer.
         this.showMessage("Your Answer:");
+        this.showMessage(qr.getUserAnswer());
+        this.showMessage("Actual Answer:");
         this.showMessage(qr.getQuestion().getQuestion());
         this.showMessage("Accuracy: " + qr.getAccuracy());
 
