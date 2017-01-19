@@ -12,7 +12,6 @@ final public class Core {
         App.userIfce.alertUser(newQS.getTitle() + " Created On: " + newQS.setDate());
 
         newQS.debugDetails();
-        newQS.debugDetails();
 
         // Find out if user would like to begin testing themselves right away
         if (App.userIfce.promptYesOrNo("Would you like to test yourself now?")) {
@@ -20,13 +19,11 @@ final public class Core {
         }
     }
 
+    // Accepts a QS and goes through each question, prompting the user for the answer.
     private static void beginTest (QuestionSet qs) {
+        Question[] shuffledQuestions = qs.getShuffledQuestions();
         App.userIfce.alertUser("Beginning Test '" + qs.getTitle() + "'.");
 
-        //Get shuffled version for each question
 
-        //Prompt user for an answer
-
-        //
     }
 }

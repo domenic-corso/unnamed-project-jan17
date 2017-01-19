@@ -17,33 +17,15 @@ public class QuestionSet {
         this.numQuestions = 0;
     }
 
-    // Getter methods
+    // --- GETTER METHODS ---
     public String getTitle () { return this.title; }
 
     public String getCreatorName () { return this.creatorName; }
 
-    public int getNumQuestions () { return this.numQuestions; }
-
-    // Add a Question to array of Questions
-    public void addQuestion (Question question) {
-        // Cancel if the maximum number of questions has been reached
-        // Note that this should never really be greater than, could leave it as '=='
-        if (this.numQuestions >= App.MAX_QUESTIONS_PER_SET) return;
-        this.questions[this.numQuestions++] = question;
-    }
-    
-    // Setter methods for the Title and Creator name of the current QuestionSet
-    public void setTitle (String title) { this.title = title; }
-
-    public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
-    
-    // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
-    public void setDate(){
-    	this.dateCreated = new Date();
-    }
+    public Question[] getQuestions () { return this.questions; }
 
     // Returns a shuffled version of the Questions' array.
-    public Question[] shuffleQuestions () {
+    public Question[] getShuffledQuestions () {
         // Create new empty array of Questions' which will be filled with random Questions of the original array.
         Question[] shuffled = new Question[this.numQuestions];
 
@@ -62,6 +44,30 @@ public class QuestionSet {
         return shuffled;
     }
 
+    public int getNumQuestions () { return this.numQuestions; }
+
+    // Add a Question to array of Questions
+    public void addQuestion (Question question) {
+        // Cancel if the maximum number of questions has been reached
+        // Note that this should never really be greater than, could leave it as '=='
+        if (this.numQuestions >= App.MAX_QUESTIONS_PER_SET) return;
+        this.questions[this.numQuestions++] = question;
+    }
+    
+    // --- SETTER METHODS ---
+    public void setTitle (String title) {
+        this.title = title;
+    }
+
+    public void setCreatorName (String creatorName) {
+        this.creatorName = creatorName;
+    }
+    
+    // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
+    public void setDate(){
+    	this.dateCreated = new Date();
+    }
+
     public void debugDetails () {
         System.out.println("---- Question Set Details (Debugging) ----\n");
         System.out.println("Title: " + this.getTitle());
@@ -69,9 +75,8 @@ public class QuestionSet {
         System.out.println("Date: " + this.dateCreated.toString());
         System.out.println("Questions:");
 
-        Question[] shuffledVersion = this.shuffleQuestions();
-        for (int i = 0; i < this.numQuestions; i++) {
-            shuffledVersion[i].debugDetails();
+        for (Question q : this.getQuestions()) {
+            q.debugDetails();
         }
 
         System.out.println("\n---- End Question Set Details ----");
