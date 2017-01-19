@@ -7,6 +7,9 @@ final public class Core {
 
         // Alert the user that their QuestionSet has been successfully created.
         App.userIfce.alertUser("Your Question Set '" + newQS.getTitle() + "' has been successfully created.");
+        
+        // Alerts the user the date and time on which their QuestionSet was created.
+        App.userIfce.alertUser(newQS.getTitle() + " Created On: " + newQS.getDate());
 
         newQS.debugDetails();
         newQS.debugDetails();

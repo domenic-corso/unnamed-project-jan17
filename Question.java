@@ -1,15 +1,18 @@
 
 public class Question {
+	//Instance Variables
     private String question;
     private String answer;
 
     static final public int MAX_QUESTION_ANSWER_LEN = 50;
     
     public Question () {}
-
+    
+    //Setter Methods
     public void setQuestion (String question) { this.question = question; }
     public void setAnswer (String answer) { this.answer = answer; }
 
+    //Getter Methods
     public String getQuestion () { return this.question; }
     public String getAnswer () { return this.answer; }
 

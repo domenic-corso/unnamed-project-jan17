@@ -17,6 +17,7 @@ public class QuestionSet {
         this.numQuestions = 0;
     }
 
+    // Getter methods
     public String getTitle () { return this.title; }
 
     public String getCreatorName () { return this.creatorName; }
@@ -30,10 +31,18 @@ public class QuestionSet {
         if (this.numQuestions >= App.MAX_QUESTIONS_PER_SET) return;
         this.questions[this.numQuestions++] = question;
     }
-
+    
+    // Setter methods for the Title and Creator name of the current QuestionSet
     public void setTitle (String title) { this.title = title; }
 
     public void setCreatorName (String creatorName) { this.creatorName = creatorName; }
+    
+    // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
+    public Date getDate(){
+    	Date dateCreated = new Date();
+    	this.dateCreated = dateCreated;
+		return dateCreated;
+    }
 
     // Returns a shuffled version of the Questions' array.
     public Question[] shuffleQuestions () {
@@ -68,7 +77,8 @@ public class QuestionSet {
 
         System.out.println("\n---- End Question Set Details ----");
     }
-
+    
+    // Method to show a list of all the questions
     public void listQuestions () {
         if  (numQuestions == 0) {
             System.out.println("No questions!");
