@@ -7,9 +7,34 @@ public class App {
 
     public static UI userIfce;
 
+    public static QuestionSet testQS = new QuestionSet();
+
     public static void main (String[] args) {
+        testQS.setTitle("My mint test QuestionSet");
+        testQS.setCreatorName("Lu and Dom");
+
+        Question tempQuestion;
+
+        tempQuestion = new Question();
+        tempQuestion.setQuestion("What is the name of my dog?");
+        tempQuestion.setAnswer("Raffe");
+        testQS.addQuestion(tempQuestion);
+
+        tempQuestion = new Question();
+        tempQuestion.setQuestion("What colour is my keyboard?");
+        tempQuestion.setAnswer("Black");
+        testQS.addQuestion(tempQuestion);
+
+        tempQuestion = new Question();
+        tempQuestion.setQuestion("Is it hot outside?");
+        tempQuestion.setAnswer("Yes");
+        testQS.addQuestion(tempQuestion);
+
+        testQS.setDate();
+
         userIfce = new CLI();
-        userIfce.showMainMenu();
+        Core.beginTest(testQS);
+        //userIfce.showMainMenu();
     }
 
 }

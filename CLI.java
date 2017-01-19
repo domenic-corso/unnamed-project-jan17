@@ -125,6 +125,41 @@ public class CLI extends UI {
         // Otherwise in all other cases return false.
         return false;
     }
+
+    // Check parent class for description.
+    public QuestionResult[] beginTest (Question[] questions, String testTitle) {
+        // Create an array of QuestionResult, one for each Question.
+        QuestionResult[] results = new QuestionResult[questions.length];
+        this.alertUser("Beginning test '" + testTitle + "'");
+
+        for (int i = 0; i < results.length; i++) {
+            results[i] = askQuestion(questions[i]);
+        } return results;
+    }
+
+    // Asks a single question and returns a QuestionResult variable based on the users' answer
+    private QuestionResult askQuestion (Question q) {
+        QuestionResult qr = new QuestionResult();
+
+        // Add the Question to the QuestionResult.
+        qr.setQuestion(q);
+
+        // Divide interface
+        this.showMessage("--------------------------------");
+
+        // Ask user for their answer to the question and store it in the QuestionResult object.
+        qr.setUserAnswer(this.promptForDataValue(q.getQuestion(), 0));
+
+        // Display as a percentage how accurate the user was to the actual answer.
+        this.showMessage("Your Answer:");
+        this.showMessage(qr.getQuestion().getQuestion());
+        this.showMessage("Accuracy: " + qr.getAccuracy());
+
+        // Divide interface
+        this.showMessage("--------------------------------");
+
+        return qr;
+    }
    
     // Asks user for a string of text and return it. Needs a prompt message as well as a maximum amount of characters
     // allowed.

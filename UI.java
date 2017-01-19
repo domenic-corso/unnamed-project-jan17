@@ -17,4 +17,7 @@ abstract public class UI {
 
     // Alerts the user of information.
     abstract public void alertUser (String message);
+
+    // Accepts a bunch of Questions and begins the test.
+    abstract public QuestionResult[] beginTest (Question[] questions, String testTitle);
 }

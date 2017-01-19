@@ -24,6 +24,10 @@ public class QuestionSet {
 
     public Question[] getQuestions () { return this.questions; }
 
+    public int getNumQuestions () { return this.numQuestions; }
+    
+    public Date getDate () { return this.dateCreated; }
+
     // Returns a shuffled version of the Questions' array.
     public Question[] getShuffledQuestions () {
         // Create new empty array of Questions' which will be filled with random Questions of the original array.
@@ -44,8 +48,6 @@ public class QuestionSet {
         return shuffled;
     }
 
-    public int getNumQuestions () { return this.numQuestions; }
-
     // Add a Question to array of Questions
     public void addQuestion (Question question) {
         // Cancel if the maximum number of questions has been reached
@@ -53,7 +55,7 @@ public class QuestionSet {
         if (this.numQuestions >= App.MAX_QUESTIONS_PER_SET) return;
         this.questions[this.numQuestions++] = question;
     }
-    
+
     // --- SETTER METHODS ---
     public void setTitle (String title) {
         this.title = title;
@@ -62,9 +64,8 @@ public class QuestionSet {
     public void setCreatorName (String creatorName) {
         this.creatorName = creatorName;
     }
-    
-    // Retrieves the current date and assigns it to the instance variable dateCreated which is then returned. 
-    public void setDate(){
+
+    public void setDate () {
     	this.dateCreated = new Date();
     }
 
@@ -76,6 +77,7 @@ public class QuestionSet {
         System.out.println("Questions:");
 
         for (Question q : this.getQuestions()) {
+            if (q == null) continue;
             q.debugDetails();
         }
 
