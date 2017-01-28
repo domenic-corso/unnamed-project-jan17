@@ -20,7 +20,6 @@ public class QuestionResult {
 	
 	// Gets the accuracy of the users answer
 	public float getAccuracy() { return 100 ; }
-	public float getAccuracy() { return accuracy; } 
 
 	public boolean isCorrect(){
 		if(accuracy > 50){
