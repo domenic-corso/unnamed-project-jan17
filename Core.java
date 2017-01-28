@@ -21,5 +21,13 @@ final public class Core {
     public static void beginTest (QuestionSet qs) {
         Question[] shuffledQuestions = qs.getShuffledQuestions();
         App.userIfce.beginTest(shuffledQuestions, qs.getTitle());
+        
+        QuestionResult qr = new QuestionResult();
+   
+        //Go through the array and check if a question is correct based on the accuracy being greater than a certain number
+        for(int i = 0; i < shuffledQuestions.length; i++){
+        	if(qr.isCorrect() == true){
+        	}
+        }
     }
 }
