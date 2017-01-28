@@ -6,8 +6,7 @@ public class QuestionResult {
 	private String userAnswer;
 	
 	// Constructor
-	public QuestionResult () { 
-	}
+	public QuestionResult () {}
 	
 	public Question getQuestion () { return this.question; }
 	public String getUserAnswer () { return this.userAnswer; }
@@ -17,6 +16,6 @@ public class QuestionResult {
 
 	
 	// Gets the accuracy of the users answer
-	public float getAccuracy() { return 100 ; } 
+	public float getAccuracy() { return 100; }
 
 }

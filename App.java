@@ -33,7 +33,8 @@ public class App {
         testQS.setDate();
 
         userIfce = new CLI();
-        Core.beginTest(testQS);
+        testQS.getAsXML();
+        //Core.beginTest(testQS);
         //userIfce.showMainMenu();
     }
 
