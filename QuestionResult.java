@@ -24,9 +24,11 @@ public class QuestionResult {
 
 	public boolean isCorrect(){
 		if(accuracy > 50){
+			//System.out.println("Accuracy is more than 50%, Great!\n");
 			numQuestionsCorrect++;
 			return true;
 		}else{
+			//System.out.println("Accuracy is less than 50%, Try Again!\n");
 			return false;
 		}
 	}
