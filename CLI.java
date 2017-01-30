@@ -144,7 +144,7 @@ public class CLI extends UI {
         	if(qr.isCorrect() == true){
         	}
         }
-        System.out.println("You got: " + qr.getNumQuestionsCorrect() + "/" + results.length + " Correct!" );
+        this.alertUser("You got: " + qr.getNumQuestionsCorrect() + "/" + results.length + " Correct!" );
     
         return results;  
         
