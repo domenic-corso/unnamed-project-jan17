@@ -4,7 +4,6 @@ public class QuestionResult {
 	// Instance Variables
 	private Question question; 
 	private String userAnswer;
-	private float accuracy = 100;
 	private int numQuestionsCorrect = 0;
 	
 	// Constructor
@@ -22,12 +21,10 @@ public class QuestionResult {
 	public float getAccuracy() { return 100 ; }
 
 	public boolean isCorrect(){
-		if(accuracy > 50){
-			//System.out.println("Accuracy is more than 50%, Great!\n");
+		if(getAccuracy() >= 50){
 			numQuestionsCorrect++;
 			return true;
 		}else{
-			//System.out.println("Accuracy is less than 50%, Try Again!\n");
 			return false;
 		}
 	}

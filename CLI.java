@@ -136,7 +136,18 @@ public class CLI extends UI {
 
         for (int i = 0; i < results.length; i++) {
             results[i] = askQuestion(questions[i]);
-        } return results;
+        } 
+        
+        QuestionResult qr = new QuestionResult();
+        //Go through the array and check if a question is correct based on the accuracy being greater than a certain number
+        for(int i = 0; i < results.length ; i++){
+        	if(qr.isCorrect() == true){
+        	}
+        }
+        System.out.println("You got: " + qr.getNumQuestionsCorrect() + "/" + results.length + " Correct!" );
+    
+        return results;  
+        
     }
 
     // Asks a single question and returns a QuestionResult variable based on the users' answer

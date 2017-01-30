@@ -34,7 +34,7 @@ public class App {
 
         userIfce = new CLI();
         testQS.getAsXML();
-        //Core.beginTest(testQS);
+        Core.beginTest(testQS);
         //userIfce.showMainMenu();
     }
 
