@@ -20,4 +20,7 @@ abstract public class UI {
 
     // Accepts a bunch of Questions and begins the test.
     abstract public QuestionResult[] beginTest (Question[] questions, String testTitle);
+    
+    // Displays results based on the responses the user had entered.
+    abstract public void displayTestResults (QuestionResult[] results);
 }

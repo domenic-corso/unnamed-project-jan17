@@ -138,18 +138,24 @@ public class CLI extends UI {
             results[i] = askQuestion(questions[i]);
         } 
         
+        //Show user the results such as 3/3 
+        displayTestResults(results);
+        
+        return results;  
+    }
+       
+    public void displayTestResults(QuestionResult[] results){
         QuestionResult qr = new QuestionResult();
+        
         //Go through the array and check if a question is correct based on the accuracy being greater than a certain number
         for(int i = 0; i < results.length ; i++){
         	if(qr.isCorrect() == true){
         	}
         }
         this.alertUser("You got: " + qr.getNumQuestionsCorrect() + "/" + results.length + " Correct!" );
-    
-        return results;  
         
     }
-
+    
     // Asks a single question and returns a QuestionResult variable based on the users' answer
     private QuestionResult askQuestion (Question q) {
         QuestionResult qr = new QuestionResult();
